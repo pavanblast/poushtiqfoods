@@ -1,41 +1,32 @@
-name: Run TestNG Tests
+name: Java CI with Maven (TestNG)
 
 on:
   push:
-    branches: [ pavan_dev ]
+    branches: [pavan_dev]
   pull_request:
-    branches: [ pavan_dev ]
+    branches: [pavan_dev]
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Java 21
-        uses: actions/setup-java@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
           java-version: '21'
+          distribution: 'temurin'
 
-      - name: Install Maven 3.9.9
-        run: |
-          Invoke-WebRequest -Uri https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip -OutFile apache-maven-3.9.9-bin.zip
-          Expand-Archive -Path apache-maven-3.9.9-bin.zip -DestinationPath $Env:ProgramFiles
-          $env:MAVEN_HOME="$Env:ProgramFiles\apache-maven-3.9.9"
-          $env:PATH="$env:MAVEN_HOME\bin;$env:PATH"
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
-      - name: Show Java version
-        run: java -version
-
-      - name: Install TestNG dependency manually
-        run: mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=lib
-
-      - name: List project files (to verify testng.xml location)
-        run: dir
-
-      - name: Run TestNG tests using testng.xml
-        run: |
-          java -cp "lib/*;target/classes" org.testng.TestNG testng.xml
+      - name: Run TestNG tests with testng.xml
+        run: mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml
