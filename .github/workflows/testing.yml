@@ -20,26 +20,23 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Install Maven 3.9.9 (for dependency resolution)
+      - name: Install Maven 3.9.9
         run: |
           Invoke-WebRequest -Uri https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip -OutFile apache-maven-3.9.9-bin.zip
           Expand-Archive -Path apache-maven-3.9.9-bin.zip -DestinationPath $Env:ProgramFiles
           $env:MAVEN_HOME="$Env:ProgramFiles\apache-maven-3.9.9"
           $env:PATH="$env:MAVEN_HOME\bin;$env:PATH"
 
-      - name: Show Java version and Maven version
-        run: |
-          java -version
-          mvn -version
+      - name: Show Java version
+        run: java -version
 
-      - name: List project files
+      - name: Install TestNG using Maven (without using Maven to run the tests)
         run: |
-          dir
+          mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=lib
 
-      - name: Download TestNG Dependency
-        run: |
-          mvn dependency:copy -Dartifact=org.testng:testng:7.8.0 -DoutputDirectory=libs
+      - name: List project files (to verify testng.xml location)
+        run: dir
 
-      - name: Run TestNG tests using testng.xml
+      - name: Run TestNG tests using testng.xml directly
         run: |
-          java -cp "libs/*;." org.testng.TestNG testng.xml
+          java -cp "lib/*;poushtiqfoods/target/classes" org.testng.TestNG poushtiqfoods/testng.xml
