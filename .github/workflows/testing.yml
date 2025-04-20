@@ -20,21 +20,26 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Install Maven 3.9.9
+      - name: Install TestNG and Maven (if not installed)
         run: |
+          # Install Maven (Optional, if you don't want to add it manually in your repository)
           Invoke-WebRequest -Uri https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip -OutFile apache-maven-3.9.9-bin.zip
           Expand-Archive -Path apache-maven-3.9.9-bin.zip -DestinationPath $Env:ProgramFiles
           $env:MAVEN_HOME="$Env:ProgramFiles\apache-maven-3.9.9"
           $env:PATH="$env:MAVEN_HOME\bin;$env:PATH"
+          
+          # Ensure that the TestNG jar is available by adding TestNG to the classpath.
+          mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=libs
 
       - name: Show Java and Maven versions
         run: |
           java -version
           mvn -version
 
-      - name: List files in the current directory
-        run: dir
-
-      - name: Run TestNG tests explicitly using testng.xml
+      - name: List files to verify location of testng.xml
         run: |
-          mvn clean test -DsuiteXmlFiles=testng.xml --no-transfer-progress -B
+          dir
+
+      - name: Run TestNG tests using the testng.xml file
+        run: |
+          java -cp "libs/*;." org.testng.TestNG testng.xml
