@@ -20,12 +20,15 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-
-      - name: Set up Maven 3.9.9
-        uses: s4u/setup-maven-action@v1
-        with:
-          maven-version: '3.9.9'
-
+      - name: Install Maven 3.9.9
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+          tar -xzf apache-maven-3.9.9-bin.tar.gz
+          sudo mv apache-maven-3.9.9 /opt/maven
+          echo "MAVEN_HOME=/opt/maven" >> $GITHUB_ENV
+          echo "/opt/maven/bin" >> $GITHUB_PATH
 
       - name: Show Java and Maven versions
         run: |
