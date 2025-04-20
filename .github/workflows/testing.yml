@@ -32,6 +32,9 @@ jobs:
           java -version
           mvn -version
 
+      - name: List files in the current directory
+        run: dir
+
       - name: Run TestNG tests explicitly using testng.xml
         run: |
           mvn clean test -DsuiteXmlFiles=testng.xml --no-transfer-progress -B
