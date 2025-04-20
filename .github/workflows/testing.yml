@@ -31,12 +31,11 @@ jobs:
         run: java -version
 
       - name: Install TestNG dependency manually
-        run: |
-          mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=lib
+        run: mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=lib
 
       - name: List project files (to verify testng.xml location)
         run: dir
 
       - name: Run TestNG tests using testng.xml
         run: |
-          java -cp "lib/*;poushtiqfoods/target/classes" org.testng.TestNG poushtiqfoods/testng.xml
+          java -cp "lib/*;target/classes" org.testng.TestNG testng.xml
