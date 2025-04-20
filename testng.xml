@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="poushtiqfoods">
+        <classes>
+            <class name="org.example.tests.userFunctionalTestCases">
+                <methods>
+                    <exclude name="TC1Verifyproductsarelistedbycategory"/>
+                    <exclude name="TC2VerifyEachProductHasNameImageDescriptionPriceAndStatus"/>
+                    <include name="TC3AddIemToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

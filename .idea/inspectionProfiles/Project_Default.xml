@@ -1,0 +1,44 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+          <option value="poushtiqfoods" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="org.seleniumhq.selenium:selenium-server:2.53.0" />
+          <option value="org.apache.commons:commons-text:1.9" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.13.2.1" />
+          <option value="com.fasterxml.jackson.core:jackson-core:2.13.2" />
+          <option value="com.google.protobuf:protobuf-java:3.21.1" />
+          <option value="io.netty:netty-codec-http:4.1.87.Final" />
+          <option value="org.json:json:20200518" />
+          <option value="io.netty:netty-handler:4.1.87.Final" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Other" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
