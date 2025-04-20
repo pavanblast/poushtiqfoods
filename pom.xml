@@ -19,6 +19,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.8.0</version> <!-- or newer -->
         </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.8</version>
+            <scope>test</scope>
+        </dependency>
         <!-- LanguageTool -->
         <dependency>
             <groupId>org.languagetool</groupId>
