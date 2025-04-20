@@ -20,10 +20,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+
       - name: Set up Maven 3.9.9
-        uses: s4u/setup-maven-action@v1
+        uses: s4u/setup-maven-action@v1.13.0
         with:
           maven-version: '3.9.9'
+
 
       - name: Show Java and Maven versions
         run: |
