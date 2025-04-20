@@ -30,13 +30,13 @@ jobs:
       - name: Show Java version
         run: java -version
 
-      - name: Install TestNG using Maven (without using Maven to run the tests)
+      - name: Install TestNG dependency manually
         run: |
           mvn dependency:copy -Dartifact=org.testng:testng:6.8.8 -DoutputDirectory=lib
 
       - name: List project files (to verify testng.xml location)
         run: dir
 
-      - name: Run TestNG tests using testng.xml directly
+      - name: Run TestNG tests using testng.xml
         run: |
           java -cp "lib/*;poushtiqfoods/target/classes" org.testng.TestNG poushtiqfoods/testng.xml
