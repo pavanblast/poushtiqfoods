@@ -33,4 +33,5 @@ jobs:
           mvn -version
 
       - name: Run TestNG tests explicitly using testng.xml
-        run: mvn clean test -DsuiteXmlFiles=testng.xml --no-transfer-progress -B
+        run: |
+          mvn clean test -DsuiteXmlFiles=testng.xml --no-transfer-progress -B
