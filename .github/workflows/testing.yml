@@ -32,5 +32,5 @@ jobs:
           java -version
           mvn -version
 
-      - name: Run TestNG tests
-        run: mvn test --no-transfer-progress -B
+      - name: Run TestNG tests explicitly using testng.xml
+        run: mvn test -DsuiteXmlFiles=testng.xml --no-transfer-progress -B
