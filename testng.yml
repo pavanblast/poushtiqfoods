@@ -2,9 +2,9 @@ name: Run TestNG Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ pavan_dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ pavan_dev ]
 
 jobs:
   test:
