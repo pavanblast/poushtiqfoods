@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="poushtiqfoods">
         <classes>
-            <class name="org.example.tests.userFunctionalTestCases">
+            <class name="tests.userFunctionalTestCases">
                 <methods>
                     <exclude name="TC1Verifyproductsarelistedbycategory"/>
                     <exclude name="TC2VerifyEachProductHasNameImageDescriptionPriceAndStatus"/>
