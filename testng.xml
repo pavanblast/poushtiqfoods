@@ -5,9 +5,11 @@
         <classes>
             <class name="tests.userFunctionalTestCases">
                 <methods>
-                    <exclude name="TC1Verifyproductsarelistedbycategory"/>
-                    <exclude name="TC2VerifyEachProductHasNameImageDescriptionPriceAndStatus"/>
+                    <include name="TC1Verifyproductsarelistedbycategory"/>
+                    <include name="TC2VerifyEachProductHasNameImageDescriptionPriceAndStatus"/>
                     <include name="TC3AddIemToCart"/>
+                    <include name="TC5AdjustItemQuantity"/>
+                    <include name="TC4RemoveItemsFromCart"/>
                 </methods>
             </class>
         </classes>
